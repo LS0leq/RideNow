@@ -2,7 +2,6 @@
   "name": "inzynieria",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://LS0leq.github.io/RideNow",
   "dependencies": {
     "cra-template": "1.2.0",
     "leaflet": "^1.9.4",
@@ -11,14 +10,18 @@
     "react-leaflet": "^5.0.0",
     "react-router-dom": "^7.1.3",
     "react-scripts": "5.0.1",
-    "web-vitals": "^4.2.4"
+    "web-vitals": "^4.2.4",
+    "gh-pages": "^3.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build", 
+    "deploy": "gh-pages -d build"
   },
+  "homepage": "https://LS0leq.github.io/RideNow",
   "eslintConfig": {
     "extends": [
       "react-app",
