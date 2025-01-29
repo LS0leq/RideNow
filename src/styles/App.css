@@ -560,20 +560,20 @@ li span.date {
 .submit-btn:hover {
     background-color: #c0392b;
 
-.login-footer {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #555;
-}
+    .login-footer {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #555;
+    }
 
-.login-footer a {
-    color: #e74c3c;
-    text-decoration: none;
-}
+    .login-footer a {
+        color: #e74c3c;
+        text-decoration: none;
+    }
 
-.login-footer a:hover {
-    text-decoration: underline;
-}}
+    .login-footer a:hover {
+        text-decoration: underline;
+    }}
 .about-section {
     background-color: #f4f4f4;
     padding: 40px;
@@ -756,4 +756,7 @@ li span.date {
 
 .back-home-btn:hover {
     background-color: #2980b9;
+}
+#root{
+    background-image: url("/public/img/bg.jpg");
 }
