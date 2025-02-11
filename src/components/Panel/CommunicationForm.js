@@ -35,10 +35,11 @@ const CommunicationForm = () => {
 
     return (
         <div className="communication-panel">
-            <h1>Kontakt z administracją</h1>
+            <h1 style={{color: 'white'}}>Kontakt z administracją</h1>
+
 
             <section className="contact-form">
-                <h3>Wyślij wiadomość</h3>
+            <h3>Wyślij wiadomość</h3>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>Imię i nazwisko</label>
@@ -84,7 +85,32 @@ const CommunicationForm = () => {
                             required
                         ></textarea>
                     </div>
-                    <button type="submit">Wyślij</button>
+                    <button
+                        type="submit"
+                        style={{
+                            padding: '10px 20px',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '5px',
+                            fontSize: '16px',
+                            cursor: 'pointer',
+                            textDecoration: 'none',
+                            display: 'inline-block',
+                        }}
+                    >
+                        <a
+                            href={`mailto:wasowiczaleks.zsl@gmail.com?subject=${formData.subject}&body=${formData.message}`}
+                            style={{
+                                color: 'white',
+                                textDecoration: 'none',
+                                display: 'inline-block',
+                            }}
+                        >
+                            Wyślij
+                        </a>
+                    </button>
+
+
                 </form>
             </section>
 

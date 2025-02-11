@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Static/Header';
+import HeaderLog from './components/Static/HeaderLog';
+import Admin from './components/Static/Admin';
 import Footer from './components/Static/Footer';
 import About from './components/Static/About';
 import Services from './components/Static/Services';
@@ -12,6 +14,7 @@ import CommunicationForm from './components/Panel/CommunicationForm';
 import HistoryPanel from './components/Panel/HistoryPanel';
 import VehicleRecommendation from './components/Recommendation/VehicleRecommendation';
 import MapComponent from './components/Map/Map';
+import Logged from './components/Static/Logged'; // Importuj komponent do wyświetlania strony po zalogowaniu
 import './styles/App.css';
 
 const App = () => {
@@ -32,50 +35,37 @@ const App = () => {
     return (
         <Router>
             <div className="app-container">
-                <Header />
-                <div className="content">
-                    <Routes>
+                <Routes>
                     <Route
                         path="/"
                         element={
                             <>
-                                <h1>Witaj w RideNow</h1>
-                                <PreferencesForm onSubmit={handlePreferencesSubmit} />
-                                {preferences && (
-                                    <>
-                                        <VehicleRecommendation preferences={preferences} vehicles={vehicles} />
-                                        <MapComponent />
-                                        <HistoryPanel />
-                                    </>
-                                )}
-
+                                <Header />
+                                <div className="content">
+                                    <h1>Witaj w RideNow</h1>
+                                    <PreferencesForm onSubmit={handlePreferencesSubmit} />
+                                    {preferences && (
+                                        <>
+                                            <VehicleRecommendation preferences={preferences} vehicles={vehicles} />
+                                            <MapComponent />
+                                            <HistoryPanel />
+                                        </>
+                                    )}
+                                </div>
                             </>
                         }
                     />
-                    <Route
-                        path="/help"
-                        element={<CommunicationForm />}
-                    />
-                    <Route
-                        path="/map"
-                        element={<MapComponent />}
-                    />
-                    <Route
-                        path="/login"
-                        element={<Login />}
-                    /><Route
-                    path="/about"
-                    element={<About />}
-                /><Route
-                    path="/services"
-                    element={<Services />}
-                /><Route
-                    path="/privacy"
-                    element={<Privacy />}
-                />
-                    <Route path="*" element={<Error/>}/>
+                    <Route path="/help" element={<><Header /><CommunicationForm /></>} />
+                    <Route path="/admin" element={<><Header /><Admin /></>} />
+                    <Route path="/map" element={<><Header /><MapComponent /></>} />
+                    <Route path="/map/:username" element={<><HeaderLog /><MapComponent /></>} />
+                    <Route path="/login" element={<><Header /><Login /></>} />
+                    <Route path="/about" element={<><Header /><About /></>} />
+                    <Route path="/services" element={<><Header /><Services /></>} />
+                    <Route path="/privacy" element={<><Header /><Privacy /></>} />
+                    <Route path="/logged/:username" element={<Logged />} />
+                    <Route path="*" element={<><Header /><Error /></>} />
                 </Routes>
-                </div>
                 <Footer />
             </div>
         </Router>
