@@ -11,18 +11,27 @@ const Login = () => {
     const [resetEmail, setResetEmail] = useState('');
     const navigate = useNavigate();
 
-    // Przechowujemy dane użytkowników w lokalnej pamięci
     const users = JSON.parse(localStorage.getItem('users')) || [];
 
     useEffect(() => {
-        const adminExists = users.some(user => user.email === 'admin@admin.com');
+        const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+        const adminExists = storedUsers.some(user => user.email === 'admin@admin.com');
+        const managerExists = storedUsers.some(user => user.email === 'kierownik@kierownik.com');
 
         if (!adminExists) {
             const adminUser = { email: 'admin@admin.com', password: 'admin' };
-            users.push(adminUser);
-            localStorage.setItem('users', JSON.stringify(users));
+            storedUsers.push(adminUser);
         }
-    }, [users]);
+
+        if (!managerExists) {
+            const managerUser = { email: 'kierownik@kierownik.com', password: 'kierownik' };
+            storedUsers.push(managerUser);
+        }
+
+        localStorage.setItem('users', JSON.stringify(storedUsers));
+    }, []);
+
 
     const handleLoginSubmit = (e) => {
         e.preventDefault();
@@ -30,12 +39,16 @@ const Login = () => {
         const user = users.find((user) => user.email === email && user.password === password);
 
         if (user) {
-            if(user.email ==="admin@admin.com" && user.password){
-                navigate('/admin')
-            }else{
                 const username = user.email.split('@')[0];
-                navigate(`/logged/${username}`);
-            }
+                if(user.email==="admin@admin.com"){
+                    navigate(`/admin`);
+
+                }else if(user.email==="kierownik@kierownik.com"){
+                    navigate('/kierownik')
+                }else{
+                    navigate(`/logged/${username}`);
+
+                }
 
 
         } else {
@@ -45,28 +58,24 @@ const Login = () => {
 
     const handleRegisterSubmit = (e) => {
         e.preventDefault();
-        // Prosty warunek sprawdzający zgodność haseł
         if (newPassword !== newConfirmPassword) {
             alert('Hasła muszą być identyczne!');
             return;
         }
 
-        // Tworzenie nowego użytkownika
         const newUser = { email: newEmail, password: newPassword };
         users.push(newUser);
 
-        // Zapisanie użytkowników do localStorage
         localStorage.setItem('users', JSON.stringify(users));
 
         alert('Rejestracja zakończona sukcesem!');
-        setView('login'); // Po zakończeniu rejestracji wracamy do logowania
+        setView('login');
     };
 
     const handleResetPasswordSubmit = (e) => {
         e.preventDefault();
-        // Prosty formularz resetowania hasła
         alert(`Instrukcje resetowania hasła zostały wysłane na adres: ${resetEmail}`);
-        setView('login'); // Po resetowaniu hasła wracamy do logowania
+        setView('login');
     };
 
     const handleSwitchView = (viewType) => {

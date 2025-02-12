@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Static/Header';
 import HeaderLog from './components/Static/HeaderLog';
+import HeaderAdm from './components/Static/HeaderAdm';
+import HeaderKier from './components/Static/HeaderKier';
 import Admin from './components/Static/Admin';
+import Kierownik from './components/Static/Kierownik';
 import Footer from './components/Static/Footer';
 import About from './components/Static/About';
 import Services from './components/Static/Services';
@@ -14,13 +17,12 @@ import CommunicationForm from './components/Panel/CommunicationForm';
 import HistoryPanel from './components/Panel/HistoryPanel';
 import VehicleRecommendation from './components/Recommendation/VehicleRecommendation';
 import MapComponent from './components/Map/Map';
-import Logged from './components/Static/Logged'; // Importuj komponent do wyświetlania strony po zalogowaniu
+import Logged from './components/Static/Logged';
 import './styles/App.css';
 
 const App = () => {
     const [preferences, setPreferences] = useState(null);
 
-    // Lista pojazdów
     const vehicles = [
         { id: 1, name: 'Autobus Miejski', type: 'bus', seats: 50, fuel: 'Diesel' },
         { id: 2, name: 'Autobus Turystyczny', type: 'bus', seats: 45, fuel: 'Diesel' },
@@ -56,7 +58,8 @@ const App = () => {
                         }
                     />
                     <Route path="/help" element={<><Header /><CommunicationForm /></>} />
-                    <Route path="/admin" element={<><Header /><Admin /></>} />
+                    <Route path="/admin" element={<><HeaderAdm /><Admin /></>} />
+                    <Route path="/kierownik" element={<><HeaderKier /><Kierownik /></>} />
                     <Route path="/map" element={<><Header /><MapComponent /></>} />
                     <Route path="/map/:username" element={<><HeaderLog /><MapComponent /></>} />
                     <Route path="/login" element={<><Header /><Login /></>} />

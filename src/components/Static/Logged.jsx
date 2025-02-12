@@ -16,7 +16,6 @@ import ChatComponent from './ChatComponent';
 const Logged = () => {
     const [preferences, setPreferences] = useState(null);
 
-    // Lista pojazdów
     const vehicles = [
         { id: 1, name: 'Autobus Miejski', type: 'bus', seats: 50, fuel: 'Diesel' },
         { id: 2, name: 'Autobus Turystyczny', type: 'bus', seats: 45, fuel: 'Diesel' },

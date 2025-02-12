@@ -5,7 +5,7 @@ import AutobusMiejski from './img/automiej.jpg';
 
 const VehicleCard = ({ vehicle }) => {
     const navigate = useNavigate();
-    const location = useLocation(); // To get the current location (URL)
+    const location = useLocation();
 
     if (!vehicle) {
         return <div>Brak pojazdu do wyświetlenia.</div>;
@@ -33,12 +33,9 @@ const VehicleCard = ({ vehicle }) => {
     }
 
     const handleRentClick = () => {
-        // Sprawdzenie, czy w URL znajduje się "/logged/:username"
         if (location.pathname.startsWith('/logged/')) {
-            // Jeśli użytkownik jest zalogowany, wyświetl alert
             alert('Wypożyczono! Dalsze informaje zostały przesłane w aplikacji mobilnej oraz SMS. Aby zakończyć przejazd anuluj poprzez SMS.');
         } else {
-            // Jeśli użytkownik nie jest zalogowany, przekieruj do logowania
             navigate('/login');
         }
     };

@@ -1,4 +1,3 @@
-// src/components/Recommendation/VehicleRecommendation.js
 import React from 'react';
 import VehicleCard from './VehicleCard';
 

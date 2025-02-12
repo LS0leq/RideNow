@@ -63,31 +63,3 @@ button {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
-
-.partners-panel{
-    background-color: #fff;
-}
-
-.contactBtn{
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.contactBtn button{
-    margin-left: 19vw;
-    position: absolute;
-    font-size: 10px;
-}
-
-.add{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.add div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}

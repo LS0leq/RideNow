@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import chatIcon from './chat.svg'; // Załaduj plik SVG
+import chatIcon from './chat.svg';
 
 const ChatComponent = () => {
-    const [isOpen, setIsOpen] = useState(false); // Stan, który decyduje, czy czat jest otwarty
-    const [message, setMessage] = useState(''); // Stan na wiadomość
-    const [messages, setMessages] = useState([]); // Historia wiadomości
-
-    // Funkcja zmieniająca stan otwartego/zamkniętego czatu
+    const [isOpen, setIsOpen] = useState(false);
+    const [message, setMessage] = useState('');
+    const [messages, setMessages] = useState([]);
     const toggleChat = () => {
         setIsOpen(!isOpen);
     };
@@ -36,7 +34,6 @@ const ChatComponent = () => {
 
             )}
 
-            {/* Okno czatu */}
             {isOpen && (
                 <div className="chat-box">
 
